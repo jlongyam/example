@@ -1,112 +1,51 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HTML Playground</title>
-  <style>
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-    body {
-      font-family: system-ui, sans-serif;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      background: #f5f5f5;
-      color: #222;
-    }
-    header {
-      display: flex;
-      gap: .5rem;
-      align-items: center;
-      padding: .75rem 1rem;
-      background: #222;
-      color: #fff;
-    }
-    header h1 { margin: 0; font-size: 1rem; }
-    button {
-      border: 0;
-      border-radius: .4rem;
-      padding: .5rem .75rem;
-      cursor: pointer;
-    }
-    #run { margin-left: auto; }
-    main {
-      min-height: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: #ccc;
-    }
-    section {
-      min-width: 0;
-      min-height: 0;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      background: #fff;
-    }
-    .title {
-      padding: .5rem .75rem;
-      font-weight: 600;
-      border-bottom: 1px solid #ddd;
-    }
-    textarea {
-      width: 100%;
-      height: 100%;
-      resize: none;
-      border: 0;
-      outline: 0;
-      padding: 1rem;
-      font: 14px/1.5 ui-monospace, monospace;
-      background: #fafafa;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: white;
-    }
-    @media (max-width: 700px) {
-      main { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>HTML Playground</h1>
-    <button id="run">Run ▶</button>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML Playground</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-  <main>
-    <section>
-      <div class="title">HTML</div>
-      <textarea id="editor" spellcheck="false"><h1>Hello, playground!</h1>
+  <body>
+    <header>
+      <h1>HTML Playground</h1>
+      <button id="run">Run ▶</button>
+    </header>
+
+    <main>
+      <section>
+        <div class="title">HTML</div>
+        <textarea id="editor" spellcheck="false">
+<h1>Hello, playground!</h1>
 <p>Edit this HTML and press <strong>Run</strong>.</p>
-<button onclick="alert('Hello!')">Test button</button></textarea>
-    </section>
+<button onclick="alert('Hello!')">Test button</button></textarea
+        >
+      </section>
 
-    <section>
-      <div class="title">Preview</div>
-      <iframe id="preview" title="Preview"></iframe>
-    </section>
-  </main>
+      <section>
+        <div class="title">Preview</div>
+        <iframe id="preview" title="Preview"></iframe>
+      </section>
+    </main>
 
-  <script>
-    const editor = document.querySelector('#editor');
-    const preview = document.querySelector('#preview');
-    const run = document.querySelector('#run');
+    <script>
+      const editor = document.querySelector("#editor");
+      const preview = document.querySelector("#preview");
+      const run = document.querySelector("#run");
 
-    function update() {
-      preview.srcdoc = editor.value;
-    }
-
-    run.addEventListener('click', update);
-    editor.addEventListener('keydown', event => {
-      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
-        update();
+      function update() {
+        preview.srcdoc = editor.value;
       }
-    });
 
-    update();
-  </script>
-</body>
+      run.addEventListener("click", update);
+      editor.addEventListener("keydown", (event) => {
+        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+          update();
+        }
+      });
+
+      update();
+    </script>
+  </body>
 </html>
